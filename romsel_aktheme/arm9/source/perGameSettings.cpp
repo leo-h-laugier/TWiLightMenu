@@ -71,7 +71,7 @@ int perGameSettings_useBootstrap = -1;
 int perGameSettings_fcGameLoader = -1;
 int perGameSettings_fcGameLoaderCheat = -1;
 int perGameSettings_saveRelocation = -1;
-int perGameSettings_remappedKeys[12] = {0};
+int perGameSettings_remappedKeys[13] = {0};
 
 static char SET_AS_DONOR_ROM[32];
 
@@ -388,7 +388,7 @@ const char* getRegionString(char region) {
 	return "N/A";
 }
 
-std::string keyText[12] = {"", "", "SELECT", "START", "Right", "Left", "Up", "Down", "", "", "", ""};
+std::string keyText[13] = {"", "", "SELECT", "START", "Right", "Left", "Up", "Down", "", "", "", "", "NONE"};
 
 void remapButtons (void) {
 	int pressed = 0, held = 0;
@@ -444,10 +444,10 @@ void remapButtons (void) {
 
 		if (held & KEY_LEFT) {
 			perGameSettings_remappedKeys[remapButtons_cursorPosition]--;
-			if (perGameSettings_remappedKeys[remapButtons_cursorPosition] < 0) perGameSettings_remappedKeys[remapButtons_cursorPosition] = 11;
+			if (perGameSettings_remappedKeys[remapButtons_cursorPosition] < 0) perGameSettings_remappedKeys[remapButtons_cursorPosition] = 12;
 		} else if ((pressed & KEY_A) || (held & KEY_RIGHT)) {
 			perGameSettings_remappedKeys[remapButtons_cursorPosition]++;
-			if (perGameSettings_remappedKeys[remapButtons_cursorPosition] > 11) perGameSettings_remappedKeys[remapButtons_cursorPosition] = 0;
+			if (perGameSettings_remappedKeys[remapButtons_cursorPosition] > 12) perGameSettings_remappedKeys[remapButtons_cursorPosition] = 0;
 		}
 		if (pressed & KEY_B) {
 			break;
